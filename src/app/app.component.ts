@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import { MatDrawer } from '@angular/material';
 
 @Component({
   selector: 'app-root',
@@ -6,16 +7,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  answer: string = '';
-  answerDisplay: string = '';
-  showSpinner: boolean = false;
 
-  showAnswer() {
-    this.showSpinner = true;
+  showFiller = false;
 
-    setTimeout(() => {
-      this.answerDisplay = this.answer;
-      this.showSpinner = false;
-    }, 2000);
+  @ViewChild('drawer') public _sidenav: MatDrawer;
+  ngOnInit() {
+    this._sidenav.open();
   }
 }
